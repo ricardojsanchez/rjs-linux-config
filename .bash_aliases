@@ -21,8 +21,9 @@ alias glss='git log --stat --summary'
 alias glp='git log --pretty=oneline'
 alias gp='git pull'
 alias gnp='git -nopushed'
-alias gra='git remote add origin '
+alias grao='git remote add origin '
 alias gdh='git diff HEAD^..HEAD'
+alias gpom='git push origin master'
 
 # Rails
 alias ss='./script/server'
