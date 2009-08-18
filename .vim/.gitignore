@@ -1,0 +1,4 @@
+*.orig
+backups
+tmp
+.netrwhist

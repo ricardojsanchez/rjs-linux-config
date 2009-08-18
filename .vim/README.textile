@@ -1,0 +1,17 @@
+h1. About This Config
+
+This 'vim' config was derived from git://github.com/scottymoon/vim.git
+which was based heavily off of the instructions found here:
+http://biodegradablegeek.com/2007/12/using-vim-as-a-complete-ruby-on-rails-ide/#config
+
+Additional colors and tweaks were added based on my preferences.
+
+
+h2. Installation
+
+<pre><code>  cd ~/
+  git://github.com/scottymoon/vim.git .vim
+  ln -s .vim/vimrc .vimrc
+</code></pre>
+
+*Enjoy!*
