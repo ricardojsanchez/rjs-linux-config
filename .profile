@@ -24,6 +24,15 @@ fi
 # Required for Java
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
 
+# Require for HADOOP
+export HADOOP_INSTALL=$HOME/hadoop-0.20.0
+export PATH=$PATH:$HADOOP_INSTALL/bin
+
 # Required for Android SDK
 ANDROID_PATH=$HOME/android-sdk-linux_x86-1.5_r3
 export PATH=$PATH:$ANDROID_PATH/platforms/android-1.5/tools:$ANDROID_PATH/tools
+
+# Path for user's private scripts
+if [ -d "$HOME/.scripts" ] ; then
+    PATH="$HOME/.scripts:$PATH"
+fi

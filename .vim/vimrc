@@ -9,7 +9,7 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
- 
+
 " alt+n or alt+p to navigate between entries in QuickFix
 map <silent> <m-p> :cp <cr>
 map <silent> <m-n> :cn <cr>
@@ -31,8 +31,12 @@ set wrap  " Line wrapping off
 set linebreak
 set textwidth=0
 set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
-colorscheme tolerable  " Uncomment this to set a default theme
- 
+" Textmate scheme colors clone
+colorscheme vibrantink " Uncomment this to set a default theme
+
+" Remap leader (finally I will try it)
+let mapleader = ","
+
 " Formatting (some of these are for coding in C and C++)
 set ts=2  " Tabs are 2 spaces
 set bs=2  " Backspace over everything in insert mode
@@ -58,12 +62,29 @@ set laststatus=2  " Always show status line.
 " gvim specific
 set mousehide  " Hide mouse after chars typed
 set mouse=a  " Mouse in all modes
-set guifont=DejaVu\ Sans\ Mono\ 9
+set guifont=Monaco\ 10
+set guioptions+=l
 
 " Backups & Files
 set backup                     " Enable creation of backup file.
 set backupdir=~/.vim/backups " Where backups will go.
 set directory=~/.vim/tmp     " Where temporary files will go.
+
+" Default browser
+command -bar -nargs=1 OpenURL :!firefox <args> 2>&1 >/dev/null &
+
+" Set minimum window size
+" set wmh=0
+" Map keys + and - to maximize/minimize window
+if bufwinnr(1)
+  map + <C-W>_
+  map - <C-W>=
+endif
+
+" Follow help links with enter
+nmap <buffer> <CR> <C-]>
+" " Back to previous help page with backspace
+nmap <buffer> <BS> <C-T>
 
 " Convenient command to see the difference between the current buffer and
 " the file it was loaded from, thus the changes you made.
@@ -79,3 +100,28 @@ if has("autocmd")
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
   map <leader>mr <ESC>:rubyf %<CR>
 end
+
+au FileType haskell,vhdl,ada let b:comment_leader = '-- '
+au FileType vim let b:comment_leader = '" '
+au FileType c,cpp,java let b:comment_leader = '// '
+au FileType ruby,sh,make let b:comment_leader = '# '
+au FileType tex let b:comment_leader = '% '
+
+" Launch NERDTree at the beginning
+" autocmd VimEnter * exe 'NERDTree' | wincmd l
+
+" Load NERD_tree
+map <F9> :NERDTreeToggle<CR>
+
+" NERDCommenter
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+nmap \\ <Plug>NERDCommenterInvert
+xmap \\ <Plug>NERDCommenterInvert
+
+" Fuzzy Finder modified by Jamis Buck
+let g:fuzzy_ignore = "*.log,*.jpg,*.png,*.gif,*.swp"
+let g:fuzzy_matching_limit = 70
+" map <leader>t :FuzzyFinderTextMate<CR>
+map <leader>b :FufBuffer<CR>
+map <leader>f :FufFile<CR>

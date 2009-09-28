@@ -103,3 +103,16 @@ source ~/.scripts/ruby_switcher.sh
 
 # Run git branch visual prompt
 source ~/.scripts/gitbranch_visual.sh
+
+# Run ide for rails
+source ~/.scripts/rails_ide.sh
+
+############################
+# User specific environment
+############################
+
+# for git
+export EDITOR=vim
+
+# for bash
+set -o vi
